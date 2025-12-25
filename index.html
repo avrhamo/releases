@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/icon-32.png" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' http://localhost:5173 ws://localhost:5173;" />
+    <title>API Workspace</title>
+    
+    <!-- PWA Support -->
+    <meta name="theme-color" content="#1F2937" />
+    <meta name="description" content="The Ultimate Developer Toolkit for REST API Development" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Loading Screen Styles -->
+    <style>
+      #app-loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      #app-loading.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .loading-icon {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 30px;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      
+      .loading-text {
+        color: #06B6D4;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      
+      .loading-subtitle {
+        color: #9CA3AF;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #374151;
+        border-top: 4px solid #06B6D4;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.05); opacity: 1; }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Disable text selection */
+      * {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* Allow text selection for input fields */
+      input, textarea, [contenteditable="true"] {
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="app-loading">
+      <img src="/icon-128.png" alt="API Workspace" class="loading-icon" />
+      <div class="loading-text">API Workspace</div>
+      <div class="loading-subtitle">The Ultimate Developer Toolkit</div>
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <div id="root"></div>
+    
+    <!-- Loading Screen Script -->
+    <script>
+      // Hide loading screen when app is ready
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const loading = document.getElementById('app-loading');
+          if (loading) {
+            loading.classList.add('hide');
+            setTimeout(() => {
+              loading.style.display = 'none';
+            }, 500);
+          }
+        }, 1500); // Show loading for at least 1.5 seconds
+      });
+
+      // Also hide when React app mounts (backup)
+      if (window.React) {
+        setTimeout(() => {
+          const loading = document.getElementById('app-loading');
+          if (loading && loading.style.display !== 'none') {
+            loading.classList.add('hide');
+            setTimeout(() => {
+              loading.style.display = 'none';
+            }, 500);
+          }
+        }, 2000);
+      }
+    </script>
+    
+    <script type="module" src="/src/main.tsx"></script>
+    
+  </body>
+</html>

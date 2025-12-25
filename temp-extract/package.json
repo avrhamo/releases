@@ -1,0 +1,35 @@
+{
+  "name": "api-workspace",
+  "private": true,
+  "version": "0.0.1",
+  "description": "The Ultimate Developer Toolkit for REST API Development",
+  "author": {
+    "name": "Ayele Avraham",
+    "email": "ayele.avraham@example.com"
+  },
+  "main": "main.js",
+  "homepage": "https://github.com/avrhamo/api-workspace",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avrhamo/api-workspace.git"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.2",
+    "@monaco-editor/react": "^4.7.0",
+    "@types/openpgp": "^4.4.22",
+    "@types/swagger-ui-react": "^5.18.0",
+    "crypto-js": "^4.2.0",
+    "diff": "^5.1.0",
+    "jszip": "^3.10.1",
+    "jwt-decode": "^4.0.0",
+    "kafkajs": "^2.2.4",
+    "mongodb": "^6.15.0",
+    "node-fetch": "^2.7.0",
+    "openpgp": "^6.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "recharts": "^3.2.1",
+    "swagger-ui-react": "^5.21.0"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "appId": "com.apiworkspace.app",
+  "productName": "API Workspace",
+  "directories": {
+    "output": "dist-electron"
+  },
+  "npmRebuild": false,
+  "compression": "maximum",
+  "files": [
+    "dist/**/*",
+    "main.js",
+    "preload.js",
+    "package.json",
+    "!**/node_modules/**/.cache/**/*",
+    "!**/node_modules/**/*.md",
+    "!**/node_modules/**/*.ts",
+    "!**/node_modules/**/*.d.ts",
+    "!**/node_modules/**/test/**/*",
+    "!**/node_modules/**/tests/**/*",
+    "!**/node_modules/**/docs/**/*",
+    "!**/node_modules/**/examples/**/*",
+    "!src/**/*",
+    "!electron/**/*",
+    "!.git/**/*",
+    "!.github/**/*",
+    "!.vscode/**/*",
+    "!scripts/**/*",
+    "!temp-extract/**/*",
+    "!*.ps1",
+    "!*.sh",
+    "!*.md",
+    "!*.yaml",
+    "!*.yml"
+  ],
+  "asarUnpack": [
+    "dist/**/*",
+    "node_modules/kafkajs/**",
+    "node_modules/mongodb/**"
+  ],
+  "mac": {
+    "category": "public.app-category.developer-tools",
+    "target": [
+      {
+        "target": "dmg",
+        "arch": [
+          "x64",
+          "arm64"
+        ]
+      }
+    ],
+    "icon": "build/icon.png",
+    "hardenedRuntime": true,
+    "gatekeeperAssess": false,
+    "entitlements": "build/entitlements.mac.plist",
+    "entitlementsInherit": "build/entitlements.mac.plist",
+    "compression": "maximum",
+    "fileAssociations": []
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "build/icon.png",
+    "publisherName": "API Workspace Inc.",
+    "verifyUpdateCodeSignature": false,
+    "compression": "maximum"
+  },
+  "linux": {
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "build/icon.png",
+    "category": "Development",
+    "compression": "maximum"
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "API Workspace",
+    "include": "build/installer.nsh",
+    "differentialPackage": true
+  },
+  "snap": {
+    "summary": "The Ultimate Developer Toolkit for REST API Development",
+    "description": "A powerful desktop application for REST API developers with JWT tools, regex testing, MongoDB integration, Kafka utilities, and more.",
+    "grade": "stable",
+    "confinement": "strict",
+    "plugs": [
+      "default",
+      "network",
+      "network-bind",
+      "removable-media"
+    ]
+  },
+  "publish": [
+    {
+      "provider": "github",
+      "owner": "avrhamo@gmail.com",
+      "repo": "api-workspace"
+    }
+  ],
+  "extraMetadata": {
+    "main": "main.js"
+  }
+}
